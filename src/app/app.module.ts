@@ -13,12 +13,32 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MovieViewComponent } from './movie-view/movie-view.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfilePageComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
-    UserLoginFormComponent
+    UserLoginFormComponent,
+    MovieCardComponent,
+    WelcomePageComponent,
+    ProfilePageComponent,
+    MovieViewComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,12 +48,15 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule ,
+    MatFormFieldModule,
     MatDialogModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
