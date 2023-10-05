@@ -1,0 +1,19 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.logo {
+  cursor: pointer;
+}
+.matRow {
+  width: 100%;
+  justify-content: space-between;
+}
+span {
+  padding-right: 1rem;
+  color: white;
+}
+span:hover {
+  cursor: pointer;
+}
