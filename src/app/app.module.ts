@@ -21,11 +21,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MovieViewComponent } from './movie-view/movie-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { authGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent },
-  { path: 'profile', component: ProfilePageComponent },
+  { path: 'movies', component: MovieCardComponent, canActivate: [authGuard] },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [authGuard],
+  },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
