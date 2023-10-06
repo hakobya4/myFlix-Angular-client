@@ -68,6 +68,7 @@ export class ProfilePageComponent implements OnInit {
   }
   deleteUser(): void {
     this.router.navigate(['welcome']);
+    localStorage.clear;
     this.snackBar.open('User deleted', 'OK', {
       duration: 2000,
     });
