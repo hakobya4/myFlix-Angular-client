@@ -20,7 +20,7 @@ documentation.
 account.
 - Once authenticated, the user can view all movies.
 - Each movie in the movie has:
-  -A button that when clicked takes a user to the director view, where details about the director of that particular movie will be displayed.
+  - A button that when clicked takes a user to the director view, where details about the director of that particular movie will be displayed.
   - A button that when clicked takes a user to the genre view, where details about that
 a particular genre of the movie will be displayed.
   - A button that when clicked adds the specific movie to a user's favorites list.
