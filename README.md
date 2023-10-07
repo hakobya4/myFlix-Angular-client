@@ -13,7 +13,6 @@ documentation.
 - [Technical_Requirements](#Technical_Requirements)
 - [Dependencies](#Dependencies)
 - [Environment](#Environment)
-- [Google_Authorization](#Google_Authorization)
 - [User_Stories](#User_Stories)
 
 ## Features
@@ -54,3 +53,45 @@ To install the dependencies for this app run npm install after forking the code.
 - Run your app using "npm run start" to run the app on the local server
 - Push the app to a GitHub repository, create a branch gh-pages using "git checkout -b gh-pages"
 - Access the hosted app on the pages tab in the settings
+
+## User_Stories
+
+FEATURE 1: Movie View
+
+As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
+
+SCENARIO 1: 
+
+Given user has logged in; When the user moves to the movies view; Then the user should see a list of all movies on the app.
+
+SCENARIO 2:
+
+Given the movies view is open; When a user clicks on the Synopsis button; Then the user should receive a dialogue that contains a summary of the movie
+
+SCENARIO 3:
+
+Given the movies view is open; When a user clicks on the Genre button; Then the user should receive a dialogue that contains info on the genre of the movie
+
+SCENARIO 4:
+
+Given the movies view is open; When a user clicks on the Director button; Then the user should receive a dialogue that contains info on the director of the movie
+
+FEATURE 2: Profile View.
+
+As a user, I want to be able to create a profile so I can save data about my favorite movies.
+
+SCENARIO 1
+
+Given the welcome view is open; When the user has not interacted with the details of the event; Then the welcome view is shown allowing the user to login or signup
+
+SCENARIO 2
+
+Given the welcome view is open; When the user clicks on signup; Then the user can input information to signup for an account.
+
+SCENARIO 3
+
+Given the welcome view is open and user has signed up; When the user clicks on login; Then the user can input information to login and which will show the movies view.
+
+SCENARIO 4
+
+Given the user has logged in and is in the movies view; When the user clicks on profile view; Then the user can view their profile information and their favorite movie list.
