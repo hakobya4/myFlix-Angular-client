@@ -1,30 +1,29 @@
-<body
-  style="padding-top: 300px; background-image: url(../../assets/background.jpg)"
->
-  <div
-    class="main-page"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <header></header>
+  <body
     style="
-      text-align: center;
-      background-color: rgb(0, 102, 106);
-      padding-top: 20px;
-      padding-bottom: 30px;
+      padding-top: 300px;
+      background-image: url(../../assets/background.jpg);
     "
   >
-    <h1 style="color: white">Welcome to FaveFlix!</h1>
-    <button
-      (click)="openUserRegistrationDialog()"
-      style="margin-right: 10px"
-      class="button"
-    >
-      Sign Up
-    </button>
-    <button
-      color="primary"
-      (click)="openUserLoginDialog()"
-      style="margin-right: 10px"
-      class="button"
-    >
-      Login
-    </button>
-  </div>
-</body>
+    <div class="main-page">
+      <h1 style="color: white">Welcome to FaveFlix!</h1>
+      <button
+        type="button"
+        (click)="openUserRegistrationDialog()"
+        class="button"
+      >
+        Sign Up
+      </button>
+      <button type="button" (click)="openUserLoginDialog()" class="button">
+        Login
+      </button>
+    </div>
+  </body>
+</html>

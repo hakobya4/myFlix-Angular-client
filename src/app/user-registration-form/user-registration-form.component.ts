@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 // This import brings in the API calls we created in 6.2
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../user-registration-service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,7 +24,9 @@ export class UserRegistrationFormComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dialogRef.updateSize('380', '65%');
+  }
 
   // This is the function responsible for sending the form inputs to the backend
   registerUser(): void {
@@ -36,11 +38,7 @@ export class UserRegistrationFormComponent implements OnInit {
           duration: 2000,
         });
       },
-      () => {
-        this.snackBar.open('Fields Missing Values or User Exists', 'OK', {
-          duration: 2000,
-        });
-      }
+      () => {}
     );
   }
 }

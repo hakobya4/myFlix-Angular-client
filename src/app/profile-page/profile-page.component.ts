@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // This import brings in the API calls
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../user-registration-service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmFormComponent } from '../confirm-form/confirm-form.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -20,7 +22,8 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     public fetchApiData: UserRegistrationService,
     public snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +36,10 @@ export class ProfilePageComponent implements OnInit {
         });
     } else this.router.navigate(['welcome']);
   }
+  backHome(): void {
+    this.router.navigate(['movies']);
+  }
+
   editUser(): void {
     this.fetchApiData
       .editUser(this.editData, localStorage.getItem('username') || '{}')
@@ -67,15 +74,9 @@ export class ProfilePageComponent implements OnInit {
     });
   }
   deleteUser(): void {
-    this.router.navigate(['welcome']);
-    localStorage.clear();
-    this.snackBar.open('User deleted', 'OK', {
-      duration: 2000,
+    this.dialog.open(ConfirmFormComponent, {
+      width: '280px',
+      height: '200px',
     });
-    this.fetchApiData
-      .deleteUser(localStorage.getItem('username') || '{}')
-      .subscribe(() => {
-        localStorage.clear();
-      });
   }
 }

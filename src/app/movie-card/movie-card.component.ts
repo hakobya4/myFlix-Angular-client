@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { UserRegistrationService } from '../user-registration-service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +16,6 @@ export class MovieCardComponent implements OnInit {
     public fetchApiData: UserRegistrationService,
     public snackBar: MatSnackBar,
     private router: Router,
-
     public dialog: MatDialog
   ) {}
 

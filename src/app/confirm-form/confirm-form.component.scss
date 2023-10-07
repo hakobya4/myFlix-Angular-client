@@ -7,9 +7,15 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin-right: 10px;
 }
-span {
-  color: red;
-  font-size: small;
+button {
+  margin-left: 1rem;
+}
+
+.yes {
+  background-color: rgb(189, 189, 252);
+}
+.no {
+  background-color: rgb(0, 102, 106);
+  color: white;
 }

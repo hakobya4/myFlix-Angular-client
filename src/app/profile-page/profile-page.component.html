@@ -1,99 +1,104 @@
-<app-nav-bar></app-nav-bar>
-<div
-  class="profilePage"
-  style="
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(189, 189, 252);
-  "
->
-  <div style="margin-left: 20px">
-    <h1>Profile:</h1>
-    <p>Username: {{ user.Username }}</p>
-    <p>Email: {{ user.Email }}</p>
-    <p>Birthday: {{ user.Birthday | date : "yyyy-MM-dd" }}</p>
-  </div>
-  <mat-card
-    style="
-      flex-direction: column;
-      width: 350px;
-      background-color: rgb(0, 102, 106);
-      margin-top: 10px;
-      margin-right: 50px;
-    "
-  >
-    <mat-card-header>
-      <mat-card-title style="color: white">Update Username</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form>
-        <mat-form-field [style.width.px]="300">
-          <input
-            matInput
-            [(ngModel)]="editData.Username"
-            placeholder="Username"
-            type="text"
-            name="Username"
-            required
-          />
-        </mat-form-field>
-        <br />
-        <mat-form-field [style.width.px]="300">
-          <input
-            matInput
-            [(ngModel)]="editData.Password"
-            type="password"
-            placeholder="Password"
-            name="Password"
-          />
-        </mat-form-field>
-        <br />
-        <mat-form-field [style.width.px]="300">
-          <input
-            matInput
-            [(ngModel)]="editData.Email"
-            type="email"
-            placeholder="Email"
-            name="Email"
-            required
-          />
-        </mat-form-field>
-        <br />
-        <mat-form-field [style.width.px]="300">
-          <input
-            matInput
-            [(ngModel)]="editData.Birthday"
-            type="date"
-            placeholder="Birthday"
-            name="Birthday"
-          />
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions
-      style="display: flex; justify-content: space-between; margin: 5px"
-    >
-      <button mat-raised-button class="profileButton" (click)="editUser()">
-        Update User
-      </button>
-      <button mat-raised-button class="profileButton" (click)="deleteUser()">
-        Delete User
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-<div style="background-color: rgb(189, 189, 252)">
-  Favourite Movies:
-  <mat-card style="display: flex; flex-wrap: wrap; flex-direction: row">
-    <mat-card *ngFor="let movie of moviesFavorite" class="movieCard">
-      <div style="display: flex">
-        <img
-          class="movieCardImg"
-          src="{{ movie.ImagePath }}"
-          alt="{{ movie.Title }}"
-          width="200px"
-        />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+  </head>
+  <header><app-nav-bar></app-nav-bar></header>
+  <body>
+    <div class="profilePage">
+      <div style="margin-left: 20px">
+        <h1>Profile:</h1>
+        <p>Username: {{ user.Username }}</p>
+        <p>Email: {{ user.Email }}</p>
+        <p>Birthday: {{ user.Birthday | date : "yyyy-MM-dd" }}</p>
+        <button
+          aria-label="Back to Movies Button"
+          (click)="backHome()"
+          style="margin-right: 10px"
+          class="button"
+        >
+          Back
+        </button>
       </div>
-    </mat-card>
-  </mat-card>
-</div>
+      <mat-card class="update-user">
+        <mat-card-header>
+          <mat-card-title> Update User Information </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <label for="Username" style="color: white">Username:</label>
+            <mat-form-field [style.width.px]="300">
+              <input
+                matInput
+                [(ngModel)]="editData.Username"
+                placeholder="Username"
+                type="text"
+                id="Username"
+                required
+              />
+            </mat-form-field>
+            <br />
+            <label for="Password" style="color: white">Password:</label>
+            <mat-form-field [style.width.px]="300">
+              <input
+                matInput
+                [(ngModel)]="editData.Password"
+                type="password"
+                placeholder="Password"
+                id="Password"
+              />
+            </mat-form-field>
+            <br />
+            <label for="Email" style="color: white">Email:</label>
+            <mat-form-field [style.width.px]="300">
+              <input
+                matInput
+                [(ngModel)]="editData.Email"
+                type="email"
+                placeholder="Email"
+                id="Email"
+                required
+              />
+            </mat-form-field>
+            <br />
+            <label for="Birthday" style="color: white">Birthday:</label>
+            <mat-form-field [style.width.px]="300">
+              <input
+                matInput
+                [(ngModel)]="editData.Birthday"
+                type="date"
+                placeholder="Birthday"
+                id="Birthday"
+              />
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" class="profileButton" (click)="editUser()">
+            Update User
+          </button>
+          <button type="button" class="profileButton" (click)="deleteUser()">
+            Delete User
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div style="background-color: rgb(189, 189, 252)">
+      <h2>Favourite Movies:</h2>
+      <mat-card class="favorite-list">
+        <mat-card *ngFor="let movie of moviesFavorite" class="movieCard">
+          <div style="display: flex">
+            <img
+              class="movieCardImg"
+              src="{{ movie.ImagePath }}"
+              alt="{{ movie.Title }}"
+              width="200px"
+            />
+          </div>
+        </mat-card>
+      </mat-card>
+    </div>
+  </body>
+</html>

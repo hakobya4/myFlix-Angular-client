@@ -22,6 +22,7 @@ import { MovieViewComponent } from './movie-view/movie-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { authGuard } from './guards/auth.guard';
+import { ConfirmFormComponent } from './confirm-form/confirm-form.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     ProfilePageComponent,
     MovieViewComponent,
     NavBarComponent,
+    ConfirmFormComponent,
   ],
   imports: [
     BrowserModule,
