@@ -24,9 +24,12 @@ export class ConfirmFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This is the function that uses the external api to delete a user
+   * from the mongodb database and clears the local storage of the user
+   */
   deleteUser(): void {
-    this.dialogRef.close(); // This will close the modal on success!
+    this.dialogRef.close(); // This will close the modal on success
     this.router.navigate(['welcome']);
 
     this.snackBar.open('User deleted', 'OK', {
@@ -34,9 +37,7 @@ export class ConfirmFormComponent implements OnInit {
     });
     this.fetchApiData
       .deleteUser(localStorage.getItem('username') || '{}')
-      .subscribe(() => {
-        localStorage.clear();
-      });
+      .subscribe(() => {});
     localStorage.clear();
   }
 }

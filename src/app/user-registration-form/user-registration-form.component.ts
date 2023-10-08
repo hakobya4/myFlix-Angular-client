@@ -24,11 +24,17 @@ export class UserRegistrationFormComponent implements OnInit {
     public snackBar: MatSnackBar
   ) {}
 
+  /**
+   * This function changes the size of the dialogue
+   */
   ngOnInit(): void {
     this.dialogRef.updateSize('380', '65%');
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This function waits for the user's input and fetches an api to
+   * store the information in a database
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       () => {

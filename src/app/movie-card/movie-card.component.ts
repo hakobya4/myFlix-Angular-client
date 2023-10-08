@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../user-registration-service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,18 +19,28 @@ export class MovieCardComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  // movies view loads all the movies
   ngOnInit(): void {
-    if (localStorage.getItem('user') && localStorage.getItem('token')) {
-      this.getMovies();
-    } else this.router.navigate(['welcome']);
+    this.getMovies();
   }
 
+  /**
+   * Requests external api to get all movies and store it in a movies array
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       return this.movies;
     });
   }
+
+  /**
+   * Opens up a genre dialogue with the name and description
+   * variables displayed
+   *
+   * @param name
+   * @param description
+   */
   openGenreDialog(name: any, description: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -39,6 +49,14 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
+
+  /**
+   * Opens up a director dialogue with the name and description
+   * variables displayed
+   *
+   * @param name
+   * @param description
+   */
   openDirectorDialog(name: any, description: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -47,6 +65,14 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
+
+  /**
+   * Opens up a synopsis dialogue with the name and description
+   * variables displayed
+   *
+   * @param name
+   * @param description
+   */
   openSynopsisDialog(name: any, description: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -55,9 +81,20 @@ export class MovieCardComponent implements OnInit {
       },
     });
   }
+
+  /**
+   * Navigates user to the profile view
+   */
   profileView(): void {
     this.router.navigate(['profile']);
   }
+
+  /**
+   * This function takes the parameter (movie)id and adds it to the user's
+   * favorite list
+   *
+   * @param id
+   */
   addFavorites(id: string): void {
     this.fetchApiData
       .addFavorites(id, localStorage.getItem('username') || '{}')
@@ -68,10 +105,23 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * This function takes the parameter (movie) id returns boolian if it
+   * is in the user's favorite list
+   *
+   * @param id
+   * @returns
+   */
   isFavorite(id: string): boolean {
     return this.fetchApiData.isFavoriteMovie(id);
   }
 
+  /**
+   * This function takes the parameter (movie) id and removes it from the
+   * user's favorite list
+   *
+   * @param id
+   */
   removeFavorites(id: string): void {
     this.fetchApiData
       .deleteFavorites(id, localStorage.getItem('username') || '{}')

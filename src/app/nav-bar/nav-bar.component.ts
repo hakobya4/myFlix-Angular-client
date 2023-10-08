@@ -9,12 +9,24 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NavBarComponent {
   constructor(private router: Router, public dialog: MatDialog) {}
+
+  /**
+   * Navigates to movies view
+   */
   welcomeView(): void {
     this.router.navigate(['movies']);
   }
+
+  /**
+   * Navigates to profile view
+   */
   profileView(): void {
     this.router.navigate(['profile']);
   }
+
+  /**
+   * Navigates to welcome after users logout and clears storage
+   */
   logout(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();

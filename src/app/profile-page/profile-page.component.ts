@@ -26,20 +26,28 @@ export class ProfilePageComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  /**
+   * This function gets user information from an api when profile view is loaded
+   */
   ngOnInit(): void {
-    if (localStorage.getItem('token') && localStorage.getItem('user')) {
-      this.fetchApiData
-        .getUser(localStorage.getItem('username') || '{}')
-        .subscribe((result) => {
-          this.user = result;
-          this.favoriteMovies();
-        });
-    } else this.router.navigate(['welcome']);
+    this.fetchApiData
+      .getUser(localStorage.getItem('username') || '{}')
+      .subscribe((result) => {
+        this.user = result;
+        this.favoriteMovies();
+      });
   }
+
+  /**
+   * This function routes the user to movies view
+   */
   backHome(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * This function takes the user input and updates their information in a database
+   */
   editUser(): void {
     this.fetchApiData
       .editUser(this.editData, localStorage.getItem('username') || '{}')
@@ -64,6 +72,10 @@ export class ProfilePageComponent implements OnInit {
       );
   }
 
+  /**
+   * This function fetches all movies and filters them based on the ids
+   * in the users favorite movie list
+   */
   favoriteMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       const movies = resp;
@@ -73,6 +85,10 @@ export class ProfilePageComponent implements OnInit {
       );
     });
   }
+
+  /**
+   * This function opens a dialogue from confirm form component
+   */
   deleteUser(): void {
     this.dialog.open(ConfirmFormComponent, {
       width: '280px',

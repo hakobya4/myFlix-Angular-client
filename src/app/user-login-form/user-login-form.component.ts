@@ -25,11 +25,17 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) {}
 
+  /**
+   * This function changes the size of the dialogue
+   */
   ngOnInit(): void {
     this.dialogRef.updateSize('330px', '47%');
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This function waits for the user's input and fetches an api to
+   * login the user
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
