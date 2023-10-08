@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 // This import brings in the API calls
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../user-registration-service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmFormComponent } from '../confirm-form/confirm-form.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -20,19 +22,32 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     public fetchApiData: UserRegistrationService,
     public snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
+  /**
+   * This function gets user information from an api when profile view is loaded
+   */
   ngOnInit(): void {
-    if (localStorage.getItem('token') && localStorage.getItem('user')) {
-      this.fetchApiData
-        .getUser(localStorage.getItem('username') || '{}')
-        .subscribe((result) => {
-          this.user = result;
-          this.favoriteMovies();
-        });
-    } else this.router.navigate(['welcome']);
+    this.fetchApiData
+      .getUser(localStorage.getItem('username') || '{}')
+      .subscribe((result) => {
+        this.user = result;
+        this.favoriteMovies();
+      });
   }
+
+  /**
+   * This function routes the user to movies view
+   */
+  backHome(): void {
+    this.router.navigate(['movies']);
+  }
+
+  /**
+   * This function takes the user input and updates their information in a database
+   */
   editUser(): void {
     this.fetchApiData
       .editUser(this.editData, localStorage.getItem('username') || '{}')
@@ -57,6 +72,10 @@ export class ProfilePageComponent implements OnInit {
       );
   }
 
+  /**
+   * This function fetches all movies and filters them based on the ids
+   * in the users favorite movie list
+   */
   favoriteMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       const movies = resp;
@@ -66,16 +85,14 @@ export class ProfilePageComponent implements OnInit {
       );
     });
   }
+
+  /**
+   * This function opens a dialogue from confirm form component
+   */
   deleteUser(): void {
-    this.router.navigate(['welcome']);
-    localStorage.clear;
-    this.snackBar.open('User deleted', 'OK', {
-      duration: 2000,
+    this.dialog.open(ConfirmFormComponent, {
+      width: '280px',
+      height: '200px',
     });
-    this.fetchApiData
-      .deleteUser(localStorage.getItem('username') || '{}')
-      .subscribe(() => {
-        localStorage.clear();
-      });
   }
 }

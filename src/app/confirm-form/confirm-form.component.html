@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm</title>
+  </head>
+  <header></header>
+  <mat-card>
+    <h2 mat-card-header style="margin-left: 15px">
+      <mat-card-title> Delete User?</mat-card-title>
+    </h2>
+    <mat-card-content>
+      Are you sure you would like to delete user?
+    </mat-card-content>
+    <mat-card-actions style="justify-content: end">
+      <button type="button" class="button yes" (click)="deleteUser()">
+        Yes
+      </button>
+      <button type="button" class="button no" mat-dialog-close>No</button>
+    </mat-card-actions>
+  </mat-card>
+</html>

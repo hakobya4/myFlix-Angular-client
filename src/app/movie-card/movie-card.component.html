@@ -1,64 +1,81 @@
-<app-nav-bar></app-nav-bar>
-<div
-  style="display: flex; flex-wrap: wrap; background-color: rgb(189, 189, 252)"
->
-  <mat-card *ngFor="let movie of movies" class="movieCard">
-    <mat-card-header
-      style="background-color: rgb(0, 102, 106); margin: 5px; color: white"
-    >
-      <mat-card-title>{{ movie.Title }}</mat-card-title>
-      <mat-card-subtitle
-        >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-      >
-    </mat-card-header>
-    <div style="display: flex">
-      <img
-        class="movieCardImg"
-        src="{{ movie.ImagePath }}"
-        alt="{{ movie.Title }}"
-      />
-      <mat-card-actions style="flex-direction: column-reverse">
-        <button
-          mat-button
-          color="primary"
-          (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
-        >
-          Genre
-        </button>
-        <button
-          mat-button
-          color="primary"
-          (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio)"
-        >
-          Director
-        </button>
-        <button
-          mat-button
-          color="primary"
-          (click)="openDirectorDialog(movie.Title, movie.Description)"
-        >
-          Synopsis
-        </button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+  </head>
+  <header>
+    <app-nav-bar></app-nav-bar>
+  </header>
+  <body>
+    <div class="movie-card-comp">
+      <mat-card *ngFor="let movie of movies" class="movieCard">
+        <mat-card-header>
+          <mat-card-title> {{ movie.Title }} </mat-card-title>
+          <mat-card-subtitle>
+            Directed by: {{ movie.Director.Name }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div style="display: flex">
+          <img
+            class="movieCardImg"
+            src="{{ movie.ImagePath }}"
+            alt="{{ movie.Title }}"
+          />
+          <mat-card-actions style="flex-direction: column-reverse">
+            <button
+              type="button"
+              mat-button
+              (click)="
+                openGenreDialog(movie.Genre.Name, movie.Genre.Description)
+              "
+            >
+              Genre
+            </button>
+            <button
+              type="button"
+              mat-button
+              (click)="
+                openDirectorDialog(movie.Director.Name, movie.Director.Bio)
+              "
+            >
+              Director
+            </button>
+            <button
+              type="button"
+              mat-button
+              (click)="openDirectorDialog(movie.Title, movie.Description)"
+            >
+              Synopsis
+            </button>
 
-        <mat-icon
-          *ngIf="!isFavorite(movie._id)"
-          mat-icon-button
-          (click)="addFavorites(movie._id)"
-          matTooltip="Add to favorites"
-          class="favIcon"
-          >favorite_border</mat-icon
-        >
+            <mat-icon
+              *ngIf="!isFavorite(movie._id)"
+              mat-icon-button
+              (click)="addFavorites(movie._id)"
+              aria-label="Button to Add to Favorites"
+              matTooltip="Add to favorites"
+              class="favIcon"
+            >
+              favorite_border
+            </mat-icon>
 
-        <mat-icon
-          *ngIf="isFavorite(movie._id)"
-          mat-icon-button
-          (click)="removeFavorites(movie._id)"
-          matTooltip="Remove from favorites"
-          style="color: rgb(0, 102, 106)"
-          class="favIcon"
-          >favorite</mat-icon
-        >
-      </mat-card-actions>
+            <mat-icon
+              *ngIf="isFavorite(movie._id)"
+              mat-icon-button
+              aria-label="Button to Remove from Favorites"
+              (click)="removeFavorites(movie._id)"
+              matTooltip="Remove from favorites"
+              style="color: rgb(0, 102, 106)"
+              class="favIcon"
+            >
+              favorite
+            </mat-icon>
+          </mat-card-actions>
+        </div>
+      </mat-card>
     </div>
-  </mat-card>
-</div>
+    <script src="tota11y.min.js"></script>
+  </body>
+</html>

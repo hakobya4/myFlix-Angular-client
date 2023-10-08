@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 // This import brings in the API calls
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { UserRegistrationService } from '../user-registration-service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -25,9 +25,17 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  /**
+   * This function changes the size of the dialogue
+   */
+  ngOnInit(): void {
+    this.dialogRef.updateSize('330px', '47%');
+  }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This function waits for the user's input and fetches an api to
+   * login the user
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {

@@ -1,53 +1,120 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Sign Up!</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+  </head>
+  <header></header>
+  <mat-dialog-content class="mat-typography">
+    <h1 style="text-align: center">Sign Up!</h1>
     <form>
-      <mat-form-field>
+      <label for="Username">Username:</label>
+      <br />
+      <mat-form-field [style.width.px]="300">
         <input
           matInput
           [(ngModel)]="userData.Username"
           placeholder="Username"
           type="text"
+          id="Username"
           name="Username"
+          minlength="5"
           required
+          class="form-control"
+          #name="ngModel"
         />
       </mat-form-field>
-      <mat-form-field>
+      <span *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+        <br />
+        <div *ngIf="name.errors?.['required']">Required</div>
+        <div *ngIf="name.errors?.['minlength']">
+          Username must be at least 5 characters.
+        </div>
+      </span>
+      <br />
+      <label for="Password">Password:</label>
+      <br />
+      <mat-form-field [style.width.px]="300">
         <input
           matInput
           [(ngModel)]="userData.Password"
           type="password"
           placeholder="Password"
-          name="Password"
+          id="Password"
           required
+          minlength="6"
+          name="Password"
+          #password="ngModel"
         />
       </mat-form-field>
-      <mat-form-field>
+      <span
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert"
+      >
+        <br />
+        <span *ngIf="password.errors?.['required']">Required</span>
+        <span *ngIf="password.errors?.['minlength']">
+          Password must be at least 6 characters.
+        </span>
+        <br />
+      </span>
+      <br />
+      <label for="Email">Email:</label>
+      <br />
+      <mat-form-field [style.width.px]="300">
         <input
           matInput
           [(ngModel)]="userData.Email"
           type="email"
           placeholder="Email"
+          id="Email"
           name="Email"
           required
+          #email="ngModel"
         />
       </mat-form-field>
-      <mat-form-field>
+      <span
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert"
+      >
+        <br />
+        <span *ngIf="email.errors?.['required']">Required</span>
+        <br />
+      </span>
+      <br />
+      <label for="Birthday">Birthday:</label>
+      <br />
+      <mat-form-field [style.width.px]="300">
         <input
           matInput
           [(ngModel)]="userData.Birthday"
           type="date"
           placeholder="Birthday"
+          id="Birthday"
           name="Birthday"
+          required=""
+          #birth="ngModel"
         />
       </mat-form-field>
+      <span
+        *ngIf="birth.invalid && (birth.dirty || birth.touched)"
+        class="alert"
+      >
+        <br />
+        <span *ngIf="birth.errors?.['required']">Required</span>
+        <br />
+      </span>
     </form>
-  </mat-card-content>
-  <mat-card-actions style="justify-content: end">
-    <button class="button" (click)="registerUser()" color="primary">
-      Sign Up
-    </button>
-  </mat-card-actions>
-</mat-card>
+    <mat-dialog-actions align="end" style="justify-content: end">
+      <button
+        type="submit"
+        class="button"
+        (click)="registerUser()"
+        color="primary"
+      >
+        Sign Up
+      </button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+</html>

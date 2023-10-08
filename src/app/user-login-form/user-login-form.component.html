@@ -1,32 +1,57 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Login!</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form>
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="userData.Username"
-          placeholder="Username"
-          type="text"
-          name="Username"
-          required
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="userData.Password"
-          type="password"
-          placeholder="Password"
-          name="Password"
-          required
-        />
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions style="justify-content: end">
-    <button class="button" (click)="loginUser()" color="primary">Login</button>
-  </mat-card-actions>
-</mat-card>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <header></header>
+  <body>
+    <mat-card>
+      <h1 mat-card-header style="text-align: center">
+        <mat-card-title>Login!</mat-card-title>
+      </h1>
+      <mat-card-content>
+        <form>
+          <label for="Username">Username:</label>
+          <br />
+          <mat-form-field [style.width.px]="300">
+            <input
+              matInput
+              [(ngModel)]="userData.Username"
+              placeholder="Username"
+              type="text"
+              id="Username"
+              name="Username"
+              required
+            />
+          </mat-form-field>
+          <br />
+          <label for="Password">Password:</label>
+          <br />
+          <mat-form-field [style.width.px]="300">
+            <input
+              matInput
+              [(ngModel)]="userData.Password"
+              type="password"
+              placeholder="Password"
+              id="Password"
+              name="Password"
+              required
+            />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions style="justify-content: end">
+        <button
+          type="submit"
+          class="button"
+          (click)="loginUser()"
+          color="primary"
+        >
+          Login
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </body>
+</html>

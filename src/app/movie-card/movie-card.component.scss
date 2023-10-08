@@ -1,3 +1,13 @@
+mat-card-header {
+  background-color: rgb(0, 102, 106);
+  margin: 5px;
+  color: white;
+}
+.movie-card-comp {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(189, 189, 252);
+}
 .movieCardImg {
   width: 200px;
   margin-left: 10px;

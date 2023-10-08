@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class MovieViewComponent {
   constructor(
+    //accesses the dialogue's information to change it
     @Inject(MAT_DIALOG_DATA)
     public data: any
   ) {}
