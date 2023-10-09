@@ -36,7 +36,7 @@ a particular genre of the movie will be displayed.
 
 ## Technical_Requirements
 - The app is written in Angular (version 9 or later)
-- The app runs on the latest version of Node.js and npm package
+- The app runs on the latest version of Node.js and the npm package
 - The app contains user registration and login forms
 - The app is designed using Angular Material
 - The app's codebase contains comments using Typedoc
