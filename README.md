@@ -1,4 +1,4 @@
-#FaveFlix
+# FaveFlix
 
 FaveFlix is an app where users can register and log in, and find a list of movies that they can add to their favorites list. Users can see the summary, director, and genre information of each movie. Users can also change their user information, and once done the user can either log out or delete their user.
 
